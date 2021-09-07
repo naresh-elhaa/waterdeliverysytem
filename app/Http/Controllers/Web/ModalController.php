@@ -10,6 +10,8 @@ use App\Models\VehicleModel;
 
 use App\Http\Task\VehicleModelTask;
 
+use App\Http\Requests\StoreAssetRequest;
+
 class ModalController extends Controller
 {
     public $task;
@@ -30,8 +32,8 @@ class ModalController extends Controller
     {
         //  exception_handling($request);
 
-         $vehiclemodel   = $this->task->index($request);
-         return view('models.index',compact('vehiclemodel'));
+         $vehiclemodels   = $this->task->index($request);
+         return view('models.index',compact('vehiclemodels'));
        
     }
 
@@ -43,7 +45,7 @@ class ModalController extends Controller
     public function create()
     {
         //
-
+        return view('models.create');
     }
 
     /**
@@ -52,19 +54,11 @@ class ModalController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreAssetRequest $request)
     {
         //
-        $request->validate([
-            'modal_name' => 'required',
-            'seating_capacity' => 'required',
-            'length' => 'required',
-            'width' => 'required',
-            'delivery_support' => 'required',
-            'delivery_price' => 'required',
-            'maximum_capacity' => 'required',
-        ]);
-        VehicleModel::create($request->all());
+        $input = $request->all();
+        $product = VehicleModel::create($input);
         return view('models.index')->with('success','Model created successfully.');
 
     }
@@ -78,7 +72,7 @@ class ModalController extends Controller
     public function show($id)
     {
         //
-        return view('products.show',compact('product'));
+        
     }
 
     /**
@@ -87,9 +81,11 @@ class ModalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(VehicleModel $vehiclemodel)
     {
         //
+
+        return view('models.edit',compact('vehiclemodel'));
     }
 
     /**
@@ -102,6 +98,8 @@ class ModalController extends Controller
     public function update(Request $request, $id)
     {
         //
+
+
     }
 
     /**

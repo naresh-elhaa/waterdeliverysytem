@@ -37,85 +37,80 @@
                   </div>
                   <div class="card-body">
                      <div class="new-user-info">
-                        <form>
+                     <form action="{{ route('modal_update',$vehiclemodel->id) }}" method="Post">
+                         @csrf
+                        
                            <div class="row">
-                           <div class="bd-example">
-                                <div class="form-floating custom-form-floating custom-form-floating-sm form-group col-md-6 mb-3">
-                                 
-                                 <input type="text" class="form-control"  id="floatingInput"  placeholder="Place Holder">
-                                 <label for="floatingInput">{{ __('view.field') }}</label>
-                              </div>
-                              <div class="form-floating custom-form-floating custom-form-floating-sm form-group col-md-6 mb-3">
-                                
-                                 <input type="text" class="form-control" id="floatingInput"  placeholder="Place Holder">
-                                 <label for="floatingInput">{{ __('view.field') }}</label>
-                              </div>
-                              <div class="form-floating custom-form-floating custom-form-floating-sm form-group col-md-6 mb-3">
-                                
-                                 <input type="text" class="form-control"  id="floatingInput"  placeholder="Place Holder">
-                                 <label for="floatingInput">{{ __('view.field') }}</label>
-                              </div>
-                              <div class="form-floating custom-form-floating custom-form-floating-sm form-group col-md-6 mb-3">
-                                <input type="email" class="form-control" id="floatingInput"  placeholder="Place Holder">
-                                <label for="floatingInput">{{ __('view.field') }}</label>
-                            </div>
-                            </div>
-                            
-                            
-                                <fieldset class="mb-3">
-                                    <legend>Radios buttons</legend>
-                                    <div class="form-check">
-                                        <input type="radio" name="radios" class="form-check-input" id="exampleRadio1">
-                                        <label class="form-check-label" for="exampleRadio1">{{ __('view.field') }}</label>
+                                <div class="bd-example">
+                                        <div class="form-floating custom-form-floating custom-form-floating-sm form-group col-md-6 mb-3">
+                                        
+                                            <input type="text" name="modal_name" class="form-control" value="{{ $vehiclemodel->modal_name }}"  id="floatingInput"  placeholder="Place Holder">
+                                            <label for="floatingInput">{{ __('view.model_name') }}</label>
+
+                                        </div>
+                                        <div class="form-floating custom-form-floating custom-form-floating-sm form-group col-md-6 mb-3">
+                                            
+                                            <input type="text" name="seating_capacity"  value="{{ $vehiclemodel->seating_capacity }}" class="form-control" id="floatingInput"  placeholder="Place Holder">
+                                            <label for="floatingInput">{{ __('view.seating_capacity') }}</label>
+                                        </div>
+
+                                        <div class="form-floating custom-form-floating custom-form-floating-sm form-group col-md-6 mb-3">
+                                        
+                                            <input type="text" name="length" class="form-control"  value="{{ $vehiclemodel->length }}"  id="floatingInput"  placeholder="Place Holder">
+                                            <label for="floatingInput">{{ __('view.length') }}</label>
+                                        </div>
+                                        <div class="form-floating custom-form-floating custom-form-floating-sm form-group col-md-6 mb-3">
+                                            
+                                            <input type="text"  name="width" class="form-control"  value="{{ $vehiclemodel->width }}" id="floatingInput"  placeholder="Place Holder">
+                                            <label for="floatingInput">{{ __('view.width') }}</label>
+                                        </div>
+
+                             
+                                        <div class="form-floating custom-form-floating custom-form-floating-sm form-group col-md-6 mb-3">
+                                        
+                                            <input type="text" name="delivery_support" class="form-control"  value="{{ $vehiclemodel->delivery_support }}"  id="floatingInput"  placeholder="Place Holder">
+                                            <label for="floatingInput">{{ __('view.delivery_support') }}</label>
+                                        </div>
+                                        <div class="form-floating custom-form-floating custom-form-floating-sm form-group col-md-6 mb-3">
+                                            
+                                            <input type="text"  name="delivery_price" class="form-control"  value="{{ $vehiclemodel->delivery_price }}" id="floatingInput"  placeholder="Place Holder">
+                                            <label for="floatingInput">{{ __('view.delivery_price') }}</label>
+                                        </div>
+
+                               
+                                        <div class="form-floating custom-form-floating custom-form-floating-sm form-group col-md-6 mb-3">
+                                        
+                                            <input type="text" name="maximum_capacity" class="form-control"  value="{{ $vehiclemodel->maximum_capacity }}"  id="floatingInput"  placeholder="Place Holder">
+                                            <label for="floatingInput">{{ __('view.maximum_capacity') }}</label>
+                                        </div>
+                                        
+                                        <!-- <div class="form-floating custom-form-floating custom-form-floating-sm form-group col-md-6 mb-3">
+                                        
+                                        <input type="text" name="minimum_fare_km" class="form-control"  id="floatingInput"  placeholder="Place Holder">
+                                        <label for="floatingInput">{{ __('view.minimum_fare_km') }}</label>
                                     </div>
-                                    <div class="mb-3 form-check">
-                                        <input type="radio" name="radios" class="form-check-input" id="exampleRadio2">
-                                        <label class="form-check-label" for="exampleRadio2">{{ __('view.field') }}</label>
-                                    </div>
-                                </fieldset>
-                                <div class="form-group col-sm-6 mb-3">
-                                    <label class="form-label" for="customFile">{{ __('view.field') }}</label>
-                                    <input type="file" class="form-control" id="customFile">
+                                    <div class="form-floating custom-form-floating custom-form-floating-sm form-group col-md-6 mb-3">
+                                        
+                                        <input type="text" name="minimum_fare_bdt" class="form-control"  id="floatingInput"  placeholder="Place Holder">
+                                        <label for="floatingInput">{{ __('view.minimum_fare_bdt') }}</label>
+                                    </div> -->
+
+                                        <div class="form-group col-sm-6">
+                                            <label class="form-label">{{ __('view.status') }}</label>
+                                            <select name="status" class="selectpicker form-control" data-style="py-0">
+                                                <option>Select Status</option>
+                                                <option value="1" >Active</option>
+                                                <option value="0">Decline</option>
+                                            </select>
+                                         </div>
+
+
                                 </div>
-                              <div class="form-group col-md-6">
-                                 <label class="form-label" for="add2">{{ __('view.field') }}</label>
-                                 <input type="text" class="form-control" id="add2" placeholder="Street Address 2">
-                              </div>
-                              
-                              <div class="form-group col-sm-6">
-                                 <label class="form-label">{{ __('view.field') }}</label>
-                                 <select name="type" class="selectpicker form-control" data-style="py-0">
-                                    <option>Select Country</option>
-                                    <option>Caneda</option>
-                                    <option>Noida</option>
-                                    <option >USA</option>
-                                    <option>India</option>
-                                    <option>Africa</option>
-                                 </select>
-                              </div>
-                              
-                                    <div class="bd-example form-group col-md-6 ">
-                                       
-                                        <label class="form-label" for="add2">{{ __('view.field') }}</label>
-                                            <input type="text" class="form-control vanila-datepicker" placeholder="Date Picker">
-                                       
-                                    </div> 
-                                  
-                                   <div class="form-group col-sm-6 mb-3">
-                                   
-                                   </div>
-                                   <div class="form-group col-md-3" >
-                                       
-                                   </div>
-                                    <div class="form-group col-md-3" >
-                                    <button type="submit" class="btn btn-primary" >{{ __('view.model_update') }}</button>
-                                   </div>
-    
-                           </div>
-                           
-                           
-                          
-                        </form>
+                                <div class="form-group col-md-3" >
+                                        <button type="submit" class="btn btn-primary" >{{ __('view.model_add') }}</button>
+                                    </div>
+                            </div>
+                    </form>
                      </div>
                   </div>
                </div>

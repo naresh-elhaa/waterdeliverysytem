@@ -26,7 +26,7 @@ class VehicleModelTask extends Controller
         //  exception_handling($request);
         
         
-        return  new VehicleModelCollection(VehicleModel::paginate(pagination()));
+        return  new VehicleModelCollection(VehicleModel::orderBy('created_at','desc')->paginate(pagination()));
 
         
     }

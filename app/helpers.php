@@ -19,7 +19,7 @@ if(!function_exists('pagination()')){
 
     function pagination()
     {
-        return 20;
+        return 5;
     }
 }
 
