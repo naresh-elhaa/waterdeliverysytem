@@ -106,23 +106,35 @@
                      
                   </table>
                      <div class="bd-example">
-                           <nav aria-label="Standard pagination example">
-                              <ul class="pagination">
-                               
-                                 <li class="page-item">
-                                       <a class="page-link" href="#" aria-label="Previous">
-                                          <span aria-hidden="true">«</span>
-                                       </a>
-                                 </li>
-                               
-                                       <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                       <li class="page-item">
-                                       <a class="page-link" href="#" aria-label="Next">
-                                          <span aria-hidden="true">»</span>
-                                       </a>
-                                 </li>
-                              </ul>
-                           </nav>
+                     <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-end" style="padding:30px;">
+                        @if($vehiclemodels->currentPage() != 1 && $vehiclemodels->lastPage() >= 5)
+                           <li class="page-item">
+                                 <a class="page-link" href="{{ $vehiclemodels->url($vehiclemodels->currentPage()-1) }}" aria-label="Previous">
+                                    <span aria-hidden="true">«</span>
+                                 </a>
+                           </li>
+                                       @endif
+                                 @for($i = max($vehiclemodels->currentPage()-2, 1); $i <= min(max($vehiclemodels->currentPage()-2, 1)+4,$vehiclemodels->lastPage()); $i++)
+                              @if($vehiclemodels->currentPage() == $i)
+                              <li class="page-item active">
+                              @else
+                              <li class="page-item">
+                              @endif
+                                 <a  class="page-link" href="{{ $vehiclemodels->url($i) }}">{{ $i }}</a>
+                              </li>
+                              
+                              @endfor
+                              @if ($vehiclemodels->currentPage() != $vehiclemodels->lastPage())
+                              <li class="page-item">
+                                 <a class="page-link" href="{{ $vehiclemodels->url($vehiclemodels->currentPage()+1) }}" aria-label="Next">
+                                 <span aria-hidden="true">»</span>
+                                 </a>
+                              </li>
+                              @endif
+                        </ul>
+                     </nav>
+                          
                      </div>
                </div>
                

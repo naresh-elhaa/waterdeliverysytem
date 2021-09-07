@@ -33,7 +33,8 @@ class ModalController extends Controller
         //  exception_handling($request);
 
          $vehiclemodels   = $this->task->index($request);
-         return view('models.index',compact('vehiclemodels'));
+         
+         return view('models.index',compact('vehiclemodels','request'));
        
     }
 
