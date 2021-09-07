@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use App\Base\Constants\ErrorStatus;
 
 class Handler extends ExceptionHandler
 {
@@ -22,7 +23,6 @@ class Handler extends ExceptionHandler
      * @var array
      */
     protected $dontFlash = [
-        'current_password',
         'password',
         'password_confirmation',
     ];
@@ -37,5 +37,30 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+
+        $this->renderable(function (CustomThrowException $e, $request) {
+            
+            // $error = \GuzzleHttp\json_decode($e->getMessage());
+
+            $responseStatusCode = 500;
+
+            return response()->json([ 'error_code'=>$e->getMessage(),'message'=> $e->getMessage(),'success'=>false],$responseStatusCode);
+        });
+
+        $this->renderable(function (CustomWebException $e, $request) {
+            
+            $error = $e->getMessage();
+
+            return back()->withInput($request->all())->with(['error' => $error]);
+        });
+
+
+        // $this->renderable(function (InvalidOrderException $e, $request) {
+        //     return response()->view('errors.invalid-order', [], 500);
+        // });
+
+
+
     }
+
 }

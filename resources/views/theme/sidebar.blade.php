@@ -60,8 +60,10 @@
                             </i>
                         </a>
                         <ul class="sub-nav collapse" id="horizontal-menu" data-bs-parent="#sidebar">
+                    
+                        @if(!auth()->user()->can('model_index'))
                             <li class="nav-item">
-                                <a class="nav-link " href="{{ url('/models') }}">
+                                <a class="nav-link " href="{{ route('modal_index') }}">
                                   <i class="icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
                                             <g>
@@ -73,8 +75,10 @@
                                   <span class="item-name"> Models </span>
                                 </a>
                             </li>
+                        @endif
+                    
                             <li class="nav-item">
-                                <a class="nav-link " href="{{ url('/models') }}">
+                                <a class="nav-link " href="">
                                     <i class="icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
                                             <g>

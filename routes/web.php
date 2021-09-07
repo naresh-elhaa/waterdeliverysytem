@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Web\ModalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,12 +22,22 @@ Route::get('/main', function () {
     return view('main.content');
 });
 
-Route::get('/models', function () {
-    return view('models.index');
-});
-
 Auth::routes();
 
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+// --------------------------------
+
+Route::prefix('modal')->name('modal_')->group(function () {
+    Route::get('/', [App\Http\Controllers\Web\ModalController::class, 'index'])->name('index');
+    Route::get('/add', [App\Http\Controllers\Web\ModalController::class, 'add'])->name('add');
+    Route::post('/store', [App\Http\Controllers\Web\ModalController::class, 'store'])->name('store'); 
+    Route::get('/edit/{modal}', [App\Http\Controllers\Web\ModalController::class, 'edit'])->name('edit');
+    Route::post('/updatet/{modal}', [App\Http\Controllers\Web\ModalController::class, 'update'])->name('update');
+    Route::get('/statust/{modal}', [App\Http\Controllers\Web\ModalController::class, 'status'])->name('status');
+    Route::get('/deletet/{modal}', [App\Http\Controllers\Web\ModalController::class, 'delete'])->name('delete');
+
+});

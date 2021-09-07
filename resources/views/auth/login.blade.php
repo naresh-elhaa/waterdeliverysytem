@@ -27,6 +27,14 @@
                <div class="row justify-content-center">
                   <div class="col-md-10">
                      <div class="card card-transparent shadow-none d-flex justify-content-center mb-0 auth-card">
+                     <div class="toast fade show align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body">
+                        Hello, world! This is a toast message.
+                    </div>
+                    <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            </div>
                         <div class="card-body">
                            <a href="#" class="navbar-brand d-flex align-items-center mb-3">
                               <!--Logo start-->
@@ -48,23 +56,23 @@
                                     <div class="form-group">
                                        <label for="email" class="form-label">{{ __('E-Mail Address') }}</label>
                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-                                       @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                      @error('email')
+                                       <span class="invalid-feedback" role="alert">
+                                       <strong>{{ $message }}</strong>
+                                          
+                                       @enderror
                                     </div>
                                  </div>
                                  <div class="col-lg-12">
                                     <div class="form-group">
                                        <label for="password" class="form-label">{{ __('Password') }}</label>
-                                       <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                       <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="password">
 
                                        @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                          <span class="invalid-feedback" role="alert">
+                                             <strong>{{ $message }}</strong>
+                                          </span>
+                                        @enderror
                                     </div>
                                  </div>
                                  <div class="col-lg-12 d-flex justify-content-between">
@@ -79,7 +87,8 @@
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
-                                @endif
+                                     @endif
+                                     
                                  </div>
                               </div>
                               <div class="form-group row">

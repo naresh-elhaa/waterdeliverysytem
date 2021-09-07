@@ -1,16 +1,24 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Web;
 
 use Illuminate\Http\Request;
 
-class DashboardController extends Controller
+use App\Http\Controllers\Controller;
+
+use App\Models\VehicleModel;
+
+use App\Http\Task\VehicleModelTask;
+
+class ModalController extends Controller
 {
+    public $task;
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->task = new VehicleModelTask();
     }
+
 
     /**
      * Display a listing of the resource.
@@ -20,10 +28,11 @@ class DashboardController extends Controller
     
     public function index(Request $request)
     {
-        // exception_handling($request);
+        //  exception_handling($request);
 
-    
-        return view('theme.header');
+         $vehiclemodel   = $this->task->index($request);
+         return view('models.index',compact('vehiclemodel'));
+       
     }
 
     /**
@@ -34,6 +43,7 @@ class DashboardController extends Controller
     public function create()
     {
         //
+
     }
 
     /**
@@ -45,6 +55,18 @@ class DashboardController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'modal_name' => 'required',
+            'seating_capacity' => 'required',
+            'length' => 'required',
+            'width' => 'required',
+            'delivery_support' => 'required',
+            'delivery_price' => 'required',
+            'maximum_capacity' => 'required',
+        ]);
+        VehicleModel::create($request->all());
+        return view('models.index')->with('success','Model created successfully.');
+
     }
 
     /**
@@ -56,6 +78,7 @@ class DashboardController extends Controller
     public function show($id)
     {
         //
+        return view('products.show',compact('product'));
     }
 
     /**

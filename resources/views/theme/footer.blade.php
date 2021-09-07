@@ -182,6 +182,7 @@
         </div>
       </div>
     </div>
+
     <!-- Backend Bundle JavaScript -->
     <script src="{{ asset('/assets/js/libs.min.js') }}"></script>
     
@@ -203,5 +204,48 @@
     
     <!-- app JavaScript -->
     <script src="{{ asset('/assets/js/app.js') }}"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+  <script>
+
+toastr.info('Hi! I am info message.');
+toastr.success('Hi! I am info message.');
+toastr.warning ('Hi! I am info message.');
+toastr.error('Hi! I am info message.');
+
+   </script> 
+
+<script type="text/javascript">
+         function deleteData(event) {
+         
+               var button = $(event.relatedTarget);
+            var id = button.data('url');
+            var a = document.getElementById('deleteformdata'); //or grab it by tagname etc
+a.href = id;
+       
+         }
+
+      </script> 
+
+
+<script type="text/javascript">
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function (e) {
+                $('#profile-img-tag').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#profile-img").change(function(){
+        readURL(this);
+    });
+</script>
+      
   </body>
+ 
 </html>

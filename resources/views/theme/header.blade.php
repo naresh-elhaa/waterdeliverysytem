@@ -13,7 +13,15 @@
       <link rel="stylesheet" href="{{ asset('/assets/css/libs.min.css') }}">
       
       <!-- Custom Css -->
-      <link rel="stylesheet" href="{{ asset('/assets/css/hope-ui.css?v=1.0.2') }}">  </head>
+      <link rel="stylesheet" href="{{ asset('/assets/css/hope-ui.css?v=1.0.2') }}">
+
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+	
+    
+      
+    
+    </head>
   <body class="  ">
     <!-- loader Start -->
     <div id="loading">
@@ -164,10 +172,10 @@
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link py-0 d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="../assets/images/avatars/01.png" alt="User-Profile" class="img-fluid avatar avatar-50 avatar-rounded">
+                    <img src="{{ asset('/assets/images/avatars/01.png') }}" alt="User-Profile" class="img-fluid avatar avatar-50 avatar-rounded">
                     <div class="caption ms-3 d-none d-md-block ">
                         <h6 class="mb-0 caption-title">{{ Auth::user()->name }}</h6>
-                        <p class="mb-0 caption-sub-title">Super Admin</p>
+                        <!-- <p class="mb-0 caption-sub-title">Super Admin</p> -->
                     </div>
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -190,6 +198,27 @@
           </div>
         </nav>
 
+        <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+               <div class="modal-content">
+                  <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Delete</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                       Are your sure want to delete.!
+                  </div>
+                  <div class="modal-footer">
+                  
+                    
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                        <a id="deleteformdata" href=""><input type="submit" class="btn btn-primary" value="OK" ></a>
+                  
+                  </div>
+               </div>
+            </div>
+      </div>
 
         @yield('content')
        

@@ -1,29 +1,34 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Task;
 
 use Illuminate\Http\Request;
 
-class DashboardController extends Controller
-{
+use App\Http\Controllers\Controller;
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+use App\Http\Resources\VehicleModelCollection;
+
+use App\Models\VehicleModel;
+
+class VehicleModelTask extends Controller
+{
 
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    
-    public function index(Request $request)
-    {
-        // exception_handling($request);
+
 
     
-        return view('theme.header');
+    public function index($request)
+    {
+        //  exception_handling($request);
+        
+        
+        return  new VehicleModelCollection(VehicleModel::paginate(pagination()));
+
+        
     }
 
     /**
@@ -34,6 +39,7 @@ class DashboardController extends Controller
     public function create()
     {
         //
+
     }
 
     /**
@@ -42,9 +48,12 @@ class DashboardController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function add(Request $request)
     {
         //
+       
+    
+
     }
 
     /**
@@ -56,6 +65,7 @@ class DashboardController extends Controller
     public function show($id)
     {
         //
+        return view('products.show',compact('product'));
     }
 
     /**
