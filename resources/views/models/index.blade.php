@@ -11,7 +11,7 @@
                                   
                               </div>
                               <div>
-                                  <a href="{{ route('modal_add') }}" class="btn btn-link btn-soft-light ">
+                                  <a href="{{ route('modal_index') }}" class="btn btn-link btn-soft-light ">
                                   
                                   {{ __('view.model_add') }}
                                   </a>

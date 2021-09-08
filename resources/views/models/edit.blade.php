@@ -11,7 +11,7 @@
                                 
                               </div>
                               <div>
-                                  <a href="{{ url('models')  }}" class="btn btn-link btn-soft-light">
+                                  <a href="{{ route('modal_index') }}" class="btn btn-link btn-soft-light">
                                   {{ __('view.model_list') }}
                                   </a>
                               </div>
@@ -37,50 +37,50 @@
                   </div>
                   <div class="card-body">
                      <div class="new-user-info">
-                     <form action="{{ route('modal_update',$vehiclemodel->id) }}" method="Post">
+                     <form action="{{ route('modal_update',$vehiclemodels->id) }}" method="Post">
                          @csrf
                         
                            <div class="row">
                                 <div class="bd-example">
                                         <div class="form-floating custom-form-floating custom-form-floating-sm form-group col-md-6 mb-3">
                                         
-                                            <input type="text" name="modal_name" class="form-control" value="{{ $vehiclemodel->modal_name }}"  id="floatingInput"  placeholder="Place Holder">
+                                            <input type="text" name="modal_name" class="form-control" value="{{ $vehiclemodels->modal_name }}"  id="floatingInput"  placeholder="Place Holder">
                                             <label for="floatingInput">{{ __('view.model_name') }}</label>
 
                                         </div>
                                         <div class="form-floating custom-form-floating custom-form-floating-sm form-group col-md-6 mb-3">
                                             
-                                            <input type="text" name="seating_capacity"  value="{{ $vehiclemodel->seating_capacity }}" class="form-control" id="floatingInput"  placeholder="Place Holder">
+                                            <input type="text" name="seating_capacity"  value="{{ $vehiclemodels->seating_capacity }}" class="form-control" id="floatingInput"  placeholder="Place Holder">
                                             <label for="floatingInput">{{ __('view.seating_capacity') }}</label>
                                         </div>
 
                                         <div class="form-floating custom-form-floating custom-form-floating-sm form-group col-md-6 mb-3">
                                         
-                                            <input type="text" name="length" class="form-control"  value="{{ $vehiclemodel->length }}"  id="floatingInput"  placeholder="Place Holder">
+                                            <input type="text" name="length" class="form-control"  value="{{ $vehiclemodels->length }}"  id="floatingInput"  placeholder="Place Holder">
                                             <label for="floatingInput">{{ __('view.length') }}</label>
                                         </div>
                                         <div class="form-floating custom-form-floating custom-form-floating-sm form-group col-md-6 mb-3">
                                             
-                                            <input type="text"  name="width" class="form-control"  value="{{ $vehiclemodel->width }}" id="floatingInput"  placeholder="Place Holder">
+                                            <input type="text"  name="width" class="form-control"  value="{{ $vehiclemodels->width }}" id="floatingInput"  placeholder="Place Holder">
                                             <label for="floatingInput">{{ __('view.width') }}</label>
                                         </div>
 
                              
                                         <div class="form-floating custom-form-floating custom-form-floating-sm form-group col-md-6 mb-3">
                                         
-                                            <input type="text" name="delivery_support" class="form-control"  value="{{ $vehiclemodel->delivery_support }}"  id="floatingInput"  placeholder="Place Holder">
+                                            <input type="text" name="delivery_support" class="form-control"  value="{{ $vehiclemodels->delivery_support }}"  id="floatingInput"  placeholder="Place Holder">
                                             <label for="floatingInput">{{ __('view.delivery_support') }}</label>
                                         </div>
                                         <div class="form-floating custom-form-floating custom-form-floating-sm form-group col-md-6 mb-3">
                                             
-                                            <input type="text"  name="delivery_price" class="form-control"  value="{{ $vehiclemodel->delivery_price }}" id="floatingInput"  placeholder="Place Holder">
+                                            <input type="text"  name="delivery_price" class="form-control"  value="{{ $vehiclemodels->delivery_price }}" id="floatingInput"  placeholder="Place Holder">
                                             <label for="floatingInput">{{ __('view.delivery_price') }}</label>
                                         </div>
 
                                
                                         <div class="form-floating custom-form-floating custom-form-floating-sm form-group col-md-6 mb-3">
                                         
-                                            <input type="text" name="maximum_capacity" class="form-control"  value="{{ $vehiclemodel->maximum_capacity }}"  id="floatingInput"  placeholder="Place Holder">
+                                            <input type="text" name="maximum_capacity" class="form-control"  value="{{ $vehiclemodels->maximum_capacity }}"  id="floatingInput"  placeholder="Place Holder">
                                             <label for="floatingInput">{{ __('view.maximum_capacity') }}</label>
                                         </div>
                                         
@@ -99,15 +99,15 @@
                                             <label class="form-label">{{ __('view.status') }}</label>
                                             <select name="status" class="selectpicker form-control" data-style="py-0">
                                                 <option>Select Status</option>
-                                                <option value="1" >Active</option>
-                                                <option value="0">Decline</option>
+                                                <option {{ ($vehiclemodels->status) == '1' ? 'selected' : '' }} value="1" >Active</option>
+                                                <option {{ ($vehiclemodels->status) == '0' ? 'selected' : '' }} value="0">Decline</option>
                                             </select>
                                          </div>
 
 
                                 </div>
                                 <div class="form-group col-md-3" >
-                                        <button type="submit" class="btn btn-primary" >{{ __('view.model_add') }}</button>
+                                        <button type="submit" class="btn btn-primary" >{{ __('view.model_update') }}</button>
                                     </div>
                             </div>
                     </form>

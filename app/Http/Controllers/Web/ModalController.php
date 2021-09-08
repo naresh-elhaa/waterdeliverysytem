@@ -28,12 +28,12 @@ class ModalController extends Controller
      * @return \Illuminate\Http\Response
      */
     
-    public function index(Request $request)
+    public function index(Request $request ,VehicleModel $vehiclemodels)
     {
         //  exception_handling($request);
 
          $vehiclemodels   = $this->task->index($request);
-         
+
          return view('models.index',compact('vehiclemodels','request'));
        
     }
@@ -59,7 +59,7 @@ class ModalController extends Controller
     {
         //
         $input = $request->all();
-        $product = VehicleModel::create($input);
+        $vehiclemodels = VehicleModel::create($input);
         return view('models.index')->with('success','Model created successfully.');
 
     }
@@ -82,11 +82,11 @@ class ModalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(VehicleModel $vehiclemodel)
+    public function edit(VehicleModel $vehiclemodels)
     {
         //
 
-        return view('models.edit',compact('vehiclemodel'));
+        return view('models.edit',compact('vehiclemodels'));
     }
 
     /**
@@ -96,11 +96,12 @@ class ModalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,VehicleModel $vehiclemodels)
     {
-        //
 
-
+        $vehiclemodels->update($request->all());
+      
+        return view('models.index',compact('vehiclemodels','request'))->with('success','Model update successfully.');
     }
 
     /**
@@ -112,5 +113,7 @@ class ModalController extends Controller
     public function destroy($id)
     {
         //
+
+
     }
 }

@@ -35,9 +35,9 @@ Route::prefix('modal')->name('modal_')->group(function () {
     Route::get('/', [App\Http\Controllers\Web\ModalController::class, 'index'])->name('index');
     Route::get('/add', [App\Http\Controllers\Web\ModalController::class, 'create'])->name('add');
     Route::post('/store', [App\Http\Controllers\Web\ModalController::class, 'store'])->name('store'); 
-    Route::get('/edit/{vehiclemodel}', [App\Http\Controllers\Web\ModalController::class, 'edit'])->name('edit');
-    Route::post('/update/{vehiclemodel}', [App\Http\Controllers\Web\ModalController::class, 'update'])->name('update');
-    Route::get('/status/{vehiclemodel}', [App\Http\Controllers\Web\ModalController::class, 'status'])->name('status');
-    Route::get('/deletet/{vehiclemodel}', [App\Http\Controllers\Web\ModalController::class, 'delete'])->name('delete');
+    Route::get('/edit/{vehiclemodels}', [App\Http\Controllers\Web\ModalController::class, 'edit'])->name('edit');
+    Route::post('/update/{vehiclemodels}', [App\Http\Controllers\Web\ModalController::class, 'update'])->name('update');
+    Route::get('/status/{vehiclemodels}', [App\Http\Controllers\Web\ModalController::class, 'status'])->name('status');
+    Route::get('/deletet/{vehiclemodels}', [App\Http\Controllers\Web\ModalController::class, 'delete'])->name('delete');
 
 });

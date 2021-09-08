@@ -19,5 +19,6 @@ return [
     'maximum_capacity' => 'Minimum Capacity',
     'status' => 'Status',
     'minimum_fare_km' => 'Minimum Fare Km',
-    'minimum_fare_bdt' => 'Minimum Fare BDT'
+    'minimum_fare_bdt' => 'Minimum Fare BDT',
+    
 ]; 
