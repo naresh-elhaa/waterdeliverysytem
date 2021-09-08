@@ -1,15 +1,10 @@
 <?php
 
 namespace App\Http\Controllers\Web;
-
 use Illuminate\Http\Request;
-
 use App\Http\Controllers\Controller;
-
 use App\Models\VehicleModel;
-
 use App\Http\Task\VehicleModelTask;
-
 use App\Http\Requests\StoreAssetRequest;
 
 class ModalController extends Controller
@@ -30,12 +25,13 @@ class ModalController extends Controller
     
     public function index(Request $request ,VehicleModel $vehiclemodels)
     {
+
+        
         //  exception_handling($request);
 
-         $vehiclemodels   = $this->task->index($request);
+         $vehiclemodels  = $this->task->index($request);
 
          return view('models.index',compact('vehiclemodels','request'));
-       
     }
 
     /**
@@ -43,10 +39,10 @@ class ModalController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         //
-        return view('models.create');
+        return view('models.create',compact('request'));
     }
 
     /**
@@ -55,13 +51,14 @@ class ModalController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreAssetRequest $request)
+    public function store(Request $request)
     {
-        //
-        $input = $request->all();
-        $vehiclemodels = VehicleModel::create($input);
-        return view('models.index')->with('success','Model created successfully.');
 
+        $input = $request->all();
+
+        $vehiclemodels = VehicleModel::create($input);
+
+        return redirect()->route('modal_index',compact('request'))->with(['success'=>'registered_successfully']);
     }
 
     /**
@@ -82,11 +79,11 @@ class ModalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(VehicleModel $vehiclemodels)
+    public function edit(VehicleModel $vehiclemodels,Request $request)
     {
         //
 
-        return view('models.edit',compact('vehiclemodels'));
+        return view('models.edit',compact('vehiclemodels','request'));
     }
 
     /**
@@ -101,7 +98,7 @@ class ModalController extends Controller
 
         $vehiclemodels->update($request->all());
       
-        return view('models.index',compact('vehiclemodels','request'))->with('success','Model update successfully.');
+        return redirect()->route('modal_index',compact('vehiclemodels','request'))->with(['success'=>'updated_successfully']);
     }
 
     /**

@@ -8,8 +8,8 @@ return [
     'model_update'=>'Update Model',
     'field'  => 'Place Holder',
     'model_name' => 'Model Name',
-    'Status' => 'Status',
-    'Action' => 'Action',
+    'status' => 'Status',
+    'action' => 'Action',
     'modal_name'=> 'Model Name',
     'seating_capacity' => 'Seating Capacity',
     'length' => 'Length',
@@ -20,5 +20,14 @@ return [
     'status' => 'Status',
     'minimum_fare_km' => 'Minimum Fare Km',
     'minimum_fare_bdt' => 'Minimum Fare BDT',
-    
+    'edit' => 'Edit',
+    'delete' => 'Delete',
+    'active' => 'Active',
+    'decline' => 'Decline',
+    'view' => 'View',
+    'model' => 'Models',
+    'vehicles' => 'Vehicles',
+    'assigned_vehicles' => 'Assigned Vehicles',
+    'registered_successfully' => 'Models Registered Successfully',
+    'updated_successfully' => 'Models Updated Successfully'
 ]; 

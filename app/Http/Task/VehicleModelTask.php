@@ -1,14 +1,11 @@
 <?php
 
 namespace App\Http\Task;
-
 use Illuminate\Http\Request;
-
 use App\Http\Controllers\Controller;
-
 use App\Http\Resources\VehicleModelCollection;
-
 use App\Models\VehicleModel;
+use App\Http\Requests\StoreAssetRequest;
 
 class VehicleModelTask extends Controller
 {
@@ -19,16 +16,9 @@ class VehicleModelTask extends Controller
      * @return \Illuminate\Http\Response
      */
 
-
-    
     public function index($request)
-    {
-        //  exception_handling($request);
-        
-        
-        return  new VehicleModelCollection(VehicleModel::orderBy('created_at','desc')->paginate(pagination()));
-
-        
+    {        
+        return  new VehicleModelCollection(VehicleModel::orderBy('created_at','desc')->paginate(pagination())); 
     }
 
     /**
@@ -48,12 +38,16 @@ class VehicleModelTask extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request  $request)
     {
         //
         
+        $input = $request->all();
+   
+      
+        $data = VehicleModel::create($input);
+   
         
-         
 
     }
 

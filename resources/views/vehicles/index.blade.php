@@ -53,7 +53,7 @@
                   <table id="basic-table" class="table table-striped mb-0" role="grid">
                      <thead>
                         <tr>
-                           <th>S.No</th>
+                           <th>#</th>
                            <th> {{ __('view.model_name') }}</th>
                            <th> {{ __('view.seating_capacity') }} </th>
                            <th>{{ __('view.Status') }} </th>

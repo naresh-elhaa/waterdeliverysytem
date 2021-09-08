@@ -210,10 +210,17 @@
 
   <script>
 
-toastr.info('Hi! I am info message.');
-toastr.success('Hi! I am info message.');
-toastr.warning ('Hi! I am info message.');
-toastr.error('Hi! I am info message.');
+
+  @if(session('success'))
+    toastr.success("{{ session()->get('success') }} ");
+  @endif
+
+  @if(session('error'))
+  toastr.error("{{ session()->get('success') }} ");
+  @endif
+// toastr.info('Hi! I am info message.');
+// toastr.warning ('Hi! I am info message.');
+// toastr.error('Hi! I am info message.');
 
    </script> 
 

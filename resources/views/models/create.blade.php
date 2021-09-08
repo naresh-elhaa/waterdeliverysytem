@@ -1,5 +1,4 @@
 @extends('theme.header')
-
 @section('content')
 <div class="iq-navbar-header" style="height: 215px;">
               <div class="container-fluid iq-container">
@@ -11,7 +10,7 @@
                                 
                               </div>
                               <div>
-                                  <a href="{{ url('models')  }}" class="btn btn-link btn-soft-light">
+                                  <a href="{{  route('modal_index')  }}" class="btn btn-link btn-soft-light">
                                   {{ __('view.model_list') }}
                                   </a>
                               </div>
